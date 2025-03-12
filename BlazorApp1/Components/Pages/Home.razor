@@ -1,0 +1,68 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<Counter IncrementAmount="10" />
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+td, th {
+  border: 2px solid #cccccc;
+  text-align: left;
+  padding: 10px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+<input type="text" id="SearchInput" onkeyup="Search()" placeholder="Search for products.." title="Type in a product name">
+
+<table>
+  <tr>
+    <th>Produkt</th>
+    <th>Beholdning</th>
+  </tr>
+  <tbody id="ProductTable">
+    <tr>
+      <td>Sko, sorte</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Jakke, rød</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table> 
+
+
+<script>
+function Search() {
+    var input, filter, table, list, line, i, txtValue;
+
+    input = document.getElementById("SearchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("ProductTable");
+    list = table.getElementsByTagName("tr");
+
+    for (i = 0; i < list.length; i++) {
+        line = list[i];
+        txtValue = line.textContent.split("\n")[0];
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            list[i].style.display = "";
+        } else {
+            list[i].style.display = "none";
+        }
+    }
+}
+</script>
